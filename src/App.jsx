@@ -1,10 +1,10 @@
+import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
+import { Button, Layout, theme } from 'antd';
 import { useState } from 'react';
-import { Collapse, Layout, Menu, Button } from 'antd';
-import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
 import Logo from './components/Logo';
 import MenuList from './components/MenuList';
 import ToggleThemeButton from './components/ToggleThemeButton';
-import { theme } from 'antd'; // Certifique-se de importar o theme
+
 
 const { Header, Sider } = Layout;
 
@@ -37,6 +37,7 @@ function App() {
           />
         </Header>
       </Layout>
+
     </Layout>
   );
 }
