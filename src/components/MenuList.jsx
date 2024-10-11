@@ -1,13 +1,28 @@
+import React, { useEffect } from 'react';
 import { AreaChartOutlined, BarsOutlined, HomeOutlined, PayCircleOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
 import { Menu } from "antd";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const MenuList = ({ darkTheme }) => {
+    const navigate = useNavigate();
+
+    // Função para verificar se o usuário está autenticado
+    const isAuthenticated = () => {
+        const token = localStorage.getItem('token'); // Verifique o token no localStorage
+        return !!token; // Retorna true se o token existir
+    };
+
+    useEffect(() => {
+        if (!isAuthenticated()) {
+            navigate('/login'); // Redireciona para a tela de login se não estiver autenticado
+        }
+    }, [navigate]);
+
     const items = [
         {
             key: 'home',
             icon: <HomeOutlined />,
-            label: <Link to="/">Home</Link>,
+            label: <Link to="/home">Home</Link>,
         },
         {
             key: '/activity',
