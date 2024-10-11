@@ -1,12 +1,12 @@
+import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
+import { Button, Layout, theme } from 'antd';
 import { useState } from 'react';
-import { Collapse, Layout, Menu, Button } from 'antd';
-import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
 import Logo from './components/Logo';
 import MenuList from './components/MenuList';
 import ToggleThemeButton from './components/ToggleThemeButton';
-import { theme } from 'antd'; // Certifique-se de importar o theme
+import Routes from './Routes';
 
-const { Header, Sider } = Layout;
+const { Header, Sider, Content } = Layout; 
 
 function App() {
   const [darkTheme, setDarkTheme] = useState(true);
@@ -18,7 +18,7 @@ function App() {
 
   const {
     token: { colorBgContainer },
-  } = theme.useToken(); // Certifique-se de que o tema está disponível aqui
+  } = theme.useToken();
 
   return (
     <Layout>
@@ -32,10 +32,13 @@ function App() {
           <Button
             type="text"
             className="toggle"
-            onClick={() => setCollapsed(!collapsed)} // Corrigido
+            onClick={() => setCollapsed(!collapsed)}
             icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
           />
         </Header>
+        <Content style={{ margin: '16px' }}> {/* Adicione margin para o conteúdo */}
+          <Routes /> {/* Renderiza as rotas aqui */}
+        </Content>
       </Layout>
     </Layout>
   );
