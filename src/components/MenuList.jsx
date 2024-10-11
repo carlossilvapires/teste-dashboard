@@ -1,36 +1,55 @@
-import { AreaChartOutlined, BarsOutlined, HomeOutlined, PayCircleOutlined } from '@ant-design/icons';
+import { AreaChartOutlined, BarsOutlined, HomeOutlined, PayCircleOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
 import { Menu } from "antd";
 import { Link } from 'react-router-dom';
-import { AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
 
 const MenuList = ({ darkTheme }) => {
+    const items = [
+        {
+            key: 'home',
+            icon: <HomeOutlined />,
+            label: <Link to="/">Home</Link>,
+        },
+        {
+            key: '/activity',
+            icon: <AppstoreOutlined />,
+            label: <Link to="/activity">Activity</Link>,
+        },
+        {
+            key: 'subtasks',
+            icon: <BarsOutlined />,
+            label: 'Tasks',
+            children: [
+                { key: 'task-1', label: 'Task 1' },
+                { key: 'task-2', label: 'Task 2' },
+                {
+                    key: 'subtask',
+                    label: 'Subtasks',
+                    children: [
+                        { key: 'subtask1', label: 'Subtask 1' },
+                        { key: 'subtask2', label: 'Subtask 2' },
+                    ],
+                },
+            ],
+        },
+        {
+            key: 'progress',
+            icon: <AreaChartOutlined />,
+            label: 'Progress',
+        },
+        {
+            key: 'payment',
+            icon: <PayCircleOutlined />,
+            label: 'Payment',
+        },
+        {
+            key: 'setting',
+            icon: <SettingOutlined />,
+            label: 'Settings',
+        },
+    ];
+
     return (
-        <Menu theme={darkTheme ? 'dark' : 'light'} mode="inline" className="menu-bar">
-            <Menu.Item key="home" icon={<HomeOutlined />}>
-                <Link to="/">Home</Link> {/* Link for Home */}
-            </Menu.Item>
-            <Menu.Item key="/activity" icon={<AppstoreOutlined />}>
-                <Link to="/activity">Activity</Link> {/* Link for Activity */}
-            </Menu.Item>
-            <Menu.SubMenu key="subtasks" icon={<BarsOutlined />} title="Tasks">
-                <Menu.Item key="task-1">Task 1</Menu.Item>
-                <Menu.Item key="task-2">Task 2</Menu.Item>
-                <Menu.SubMenu key="subtask" title="Subtasks">
-                    <Menu.Item key="subtask1">Subtask 1</Menu.Item>
-                    <Menu.Item key="subtask2">Subtask 2</Menu.Item>
-                </Menu.SubMenu>
-            </Menu.SubMenu>
-            
-            <Menu.Item key="progress" icon={<AreaChartOutlined />}>
-                Progress
-            </Menu.Item>
-            <Menu.Item key="payment" icon={<PayCircleOutlined />}>
-                Payment
-            </Menu.Item>
-            <Menu.Item key="setting" icon={<SettingOutlined />}>
-                Settings
-            </Menu.Item>
-        </Menu>
+        <Menu theme={darkTheme ? 'dark' : 'light'} mode="inline" className="menu-bar" items={items} />
     );
 };
 
