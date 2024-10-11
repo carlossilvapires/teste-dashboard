@@ -1,17 +1,18 @@
-import { BarsOutlined, HomeOutlined } from '@ant-design/icons';
+import { AreaChartOutlined, BarsOutlined, HomeOutlined, PayCircleOutlined } from '@ant-design/icons';
 import { Menu } from "antd";
-import { AppstoreOutlined, AreaChartOutlined, BarsOutlined, HomeOutlined, PayCircleOutlined, SettingOutlined, } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
+import { AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
 
 const MenuList = ({ darkTheme }) => {
     return (
         <Menu theme={darkTheme ? 'dark' : 'light'} mode="inline" className="menu-bar">
             <Menu.Item key="home" icon={<HomeOutlined />}>
-                <Link to="/">Home</Link> {/* Adiciona o link para Home */}
+                <Link to="/">Home</Link> {/* Link for Home */}
             </Menu.Item>
-            <Menu.Item key="activity" icon={<AppstoreOutlined />}>
-            Activity
+            <Menu.Item key="/activity" icon={<AppstoreOutlined />}>
+                <Link to="/activity">Activity</Link> {/* Link for Activity */}
             </Menu.Item>
-            <Menu.SubMenu key="subtasks" icon={<BarsOutlined/>} title="Tasks">
+            <Menu.SubMenu key="subtasks" icon={<BarsOutlined />} title="Tasks">
                 <Menu.Item key="task-1">Task 1</Menu.Item>
                 <Menu.Item key="task-2">Task 2</Menu.Item>
                 <Menu.SubMenu key="subtask" title="Subtasks">
@@ -21,15 +22,14 @@ const MenuList = ({ darkTheme }) => {
             </Menu.SubMenu>
             
             <Menu.Item key="progress" icon={<AreaChartOutlined />}>
-            Progress
+                Progress
             </Menu.Item>
             <Menu.Item key="payment" icon={<PayCircleOutlined />}>
-            Payment
+                Payment
             </Menu.Item>
             <Menu.Item key="setting" icon={<SettingOutlined />}>
-            Settings
+                Settings
             </Menu.Item>
-            
         </Menu>
     );
 };

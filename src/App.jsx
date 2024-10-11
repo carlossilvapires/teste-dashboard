@@ -22,7 +22,13 @@ function App() {
 
   return (
     <Layout>
-      <Sider collapsed={collapsed} collapsible trigger={null} theme={darkTheme ? 'dark' : 'light'} className='sidebar'>
+      <Sider 
+        collapsed={collapsed} 
+        collapsible 
+        trigger={null} 
+        theme={darkTheme ? 'dark' : 'light'} 
+        className='sidebar'
+      >
         <Logo />
         <MenuList darkTheme={darkTheme} />
         <ToggleThemeButton darkTheme={darkTheme} toggleTheme={toggleTheme} />
@@ -36,11 +42,10 @@ function App() {
             icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
           />
         </Header>
-        <Content style={{ margin: '16px' }}> {/* Adicione margin para o conteúdo */}
+        <Content style={{ margin: '16px' }}>
           <Routes /> {/* Renderiza as rotas aqui */}
         </Content>
       </Layout>
-
     </Layout>
   );
 }
