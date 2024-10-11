@@ -72,7 +72,7 @@ function Login() {
           localStorage.setItem("token", data.token);
 
           // Redireciona para o Dashboard após o login
-          navigate("/dashboard");
+          navigate("/home");
         } else if (response.status === 401) {
           // Erro de autenticação (credenciais inválidas)
           const errorData = await response.json();
