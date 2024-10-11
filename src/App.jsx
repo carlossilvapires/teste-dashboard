@@ -40,6 +40,7 @@ function App() {
           <Routes /> {/* Renderiza as rotas aqui */}
         </Content>
       </Layout>
+
     </Layout>
   );
 }

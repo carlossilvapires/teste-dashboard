@@ -1,5 +1,7 @@
+import { FireFilled } from '@ant-design/icons';
 import React from "react";
-import {FireFilled} from '@ant-design/icons';
+// Caminho para sua imagem
+
 
 const Logo = () => {
     return(
