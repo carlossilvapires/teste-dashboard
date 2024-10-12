@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
-import { AreaChartOutlined, BarsOutlined, HomeOutlined, PayCircleOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
+import { AppstoreOutlined, AreaChartOutlined, BarsOutlined, HomeOutlined, PayCircleOutlined, SettingOutlined } from '@ant-design/icons';
 import { Menu } from "antd";
+import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 const MenuList = ({ darkTheme }) => {
@@ -22,12 +22,12 @@ const MenuList = ({ darkTheme }) => {
         {
             key: 'home',
             icon: <HomeOutlined />,
-            label: <Link to="/home">Home</Link>,
+            label: <Link to="/TelaHome">Home</Link>,
         },
         {
             key: '/activity',
             icon: <AppstoreOutlined />,
-            label: <Link to="/activity">Activity</Link>,
+            label: <Link to="/TelaActivity">Activity</Link>,
         },
         {
             key: 'subtasks',

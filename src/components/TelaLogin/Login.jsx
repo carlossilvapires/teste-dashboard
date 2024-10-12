@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { FaMoon, FaSun } from "react-icons/fa"; // Importando ícones
-import { useNavigate } from "react-router-dom"; // Importando o hook useNavigate
+import { FaMoon, FaSun } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import "./Login.css"; // Arquivo de estilo
 
 function Login() {
@@ -10,16 +10,16 @@ function Login() {
   const [errors, setErrors] = useState({});
   const [isLoaded, setIsLoaded] = useState(false);
   const [theme, setTheme] = useState("dark-mode");
-  const [loading, setLoading] = useState(false); // Estado de loading
-  const [loginError, setLoginError] = useState(""); // Estado para erros de login
+  const [loading, setLoading] = useState(false); 
+  const [loginError, setLoginError] = useState(""); 
 
-  const navigate = useNavigate(); // Hook para redirecionamento
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     setTimeout(() => {
       setIsLoaded(true);
-    }, 100); // 100ms delay para o fade-in
-    document.body.className = theme; // Aplica o tema ao body
+    }, 100); 
+    document.body.className = theme; 
   }, [theme]);
 
   const validate = () => {
@@ -48,9 +48,9 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoginError(""); // Reseta erro de login
+    setLoginError(""); 
     if (validate()) {
-      setLoading(true); // Mostra estado de carregamento
+      setLoading(true); 
       try {
         const response = await fetch("http://localhost:8080/api/user/login", {
           method: "POST",
@@ -59,34 +59,27 @@ function Login() {
           },
           body: JSON.stringify({
             email,
-            senha: password, // Certifique-se de que o nome da propriedade está correto
+            senha: password, 
           }),
         });
 
         if (response.ok) {
           const data = await response.json();
-          // Sucesso no login
           alert("Login realizado com sucesso!");
-          console.log("Token JWT:", data.token); // Acessa o token JWT
-          // Salve o token no localStorage ou state global
+          console.log("Token JWT:", data.token); 
           localStorage.setItem("token", data.token);
-
-          // Redireciona para o Dashboard após o login
           navigate("/home");
         } else if (response.status === 401) {
-          // Erro de autenticação (credenciais inválidas)
           const errorData = await response.json();
           setLoginError(errorData.message || "Credenciais inválidas");
         } else {
-          // Outros erros (erro interno, etc)
           const errorData = await response.json();
           setLoginError(errorData.message || "Erro ao realizar o login");
         }
       } catch (error) {
-        // Falha na requisição (por exemplo, erro de rede)
         setLoginError("Falha ao conectar ao servidor");
       } finally {
-        setLoading(false); // Finaliza estado de carregamento
+        setLoading(false); 
       }
     }
   };
@@ -98,12 +91,8 @@ function Login() {
   };
 
   return (
-    <>
-      <button
-        onClick={toggleTheme}
-        className="theme-toggle"
-        style={{ color: theme === "dark-mode" ? "white" : "black" }}
-      >
+    <div>
+      <button onClick={toggleTheme} className="theme-toggle">
         {theme === "dark-mode" ? <FaSun /> : <FaMoon />}
       </button>
       <div className={`login-container ${isLoaded ? "loaded" : ""}`}>
@@ -145,14 +134,14 @@ function Login() {
             <label htmlFor="rememberMe">Relembrar login e senha</label>
           </div>
 
-          {loginError && <p className="error">{loginError}</p>} {/* Exibe erro de login */}
+          {loginError && <p className="error">{loginError}</p>} 
 
           <button type="submit" className="login-button" disabled={loading}>
             {loading ? "Carregando..." : "Login"}
           </button>
         </form>
       </div>
-    </>
+    </div>
   );
 }
 

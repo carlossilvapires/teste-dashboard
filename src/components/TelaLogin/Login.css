@@ -1,19 +1,4 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
-body {
-  font-family: 'Roboto', sans-serif;
-  background-color: #1a1a1a; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  color: white;
-  margin: 0; /* Remover margens do body */
-}
 
 /* Modos de tema */
 body.dark-mode {
