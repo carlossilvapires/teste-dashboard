@@ -8,7 +8,7 @@ const Logo = () => {
         <div>
             <div className="logo">
                 <div className="logo-icon">
-                    <FireFilled/>
+                    <img src="public/Logo-75x75.png" alt="logo" />
                 </div>
             </div>
         </div>

@@ -25,9 +25,10 @@ const MenuList = ({ darkTheme }) => {
             label: <Link to="/TelaHome">Home</Link>,
         },
         {
-            key: '/activity',
+            key: '/operador',
             icon: <AppstoreOutlined />,
-            label: <Link to="/TelaActivity">Activity</Link>,
+            label: <Link to="/TelaOperador">Operador</Link>,
+
         },
         {
             key: 'subtasks',
