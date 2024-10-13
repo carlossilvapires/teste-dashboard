@@ -37,7 +37,7 @@ function Login() {
     if (!password) {
       isValid = false;
       formErrors.password = "O campo senha é obrigatório";
-    } else if (password.length < 6) {
+    } else if (password.length < 0) {
       isValid = false;
       formErrors.password = "A senha deve ter pelo menos 6 caracteres";
     }
@@ -52,7 +52,7 @@ function Login() {
     if (validate()) {
       setLoading(true); 
       try {
-        const response = await fetch("http://localhost:8080/api/user/login", {
+        const response = await fetch("https://api.airsoftcontrol.com.br/api/user/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
