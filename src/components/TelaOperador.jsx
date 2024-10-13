@@ -102,25 +102,29 @@ const TelaOperador = () => {
     setIsEditing(true);
   };
 
-  // Função para excluir um usuário
-  const deleteUser = async (id) => {
-    try {
-      const response = await fetch(`https://api.airsoftcontrol.com.br/api/admin/remover/${id}`, {
-        method: 'DELETE',
-      });
+// Função para excluir um usuário
+const deleteUser = async (id) => {
+  try {
+    const token = localStorage.getItem('token'); // Obter o token do localStorage
+    const response = await fetch(`https://api.airsoftcontrol.com.br/api/admin/remover/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${token}`, // Adicionar o token no cabeçalho
+        'Content-Type': 'application/json', // Definir o tipo de conteúdo, se necessário
+      },
+    });
 
-      if (!response.ok) {
-        throw new Error('Erro ao excluir usuário.');
-      }
-
-      message.success('Usuário excluído com sucesso!');
-      fetchUsuarios(); // Atualiza a tabela após exclusão
-    } catch (error) {
-      console.error(error);
-      message.error('Erro ao excluir usuário.');
+    if (!response.ok) {
+      throw new Error('Erro ao excluir usuário.');
     }
-  };
 
+    message.success('Usuário excluído com sucesso!');
+    fetchUsuarios(); // Atualiza a tabela após exclusão
+  } catch (error) {
+    console.error(error);
+    message.error('Erro ao excluir usuário.');
+  }
+};
   // Função para pesquisa
   const onSearchChange = (e) => {
     setSearchText(e.target.value);
