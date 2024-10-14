@@ -1,7 +1,7 @@
 // App.js
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import { Button, Layout, theme } from 'antd';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Logo from './components/Logo';
 import MenuList from './components/MenuList';
@@ -36,7 +36,7 @@ function App() {
   } = theme.useToken();
 
   return (
-    <Layout style={{ minHeight: '100vh' }}>
+    <Layout style={{ minHeight: '100%' }}>
       {isAuthenticated() ? (
         <>
           <Sider 
@@ -47,7 +47,7 @@ function App() {
             className='sidebar'
           >
             <Logo />
-            <MenuList darkTheme={darkTheme} />
+            <MenuList darkTheme={darkTheme}/>
             <ToggleThemeButton darkTheme={darkTheme} toggleTheme={toggleTheme} />
           </Sider>
           <Layout>
@@ -59,14 +59,14 @@ function App() {
                 icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
               />
             </Header>
-            <Content style={{ margin: '16px' }}>
+            <Content style={{ margin: '16px', height: 'auto'}}>
               <AppRoutes /> {/* Renderiza as rotas aqui */}
             </Content>
           </Layout>
         </>
       ) : (
-        <Layout style={{ padding: 0, minHeight: '100vh' }}>
-          <Content style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+        <Layout style={{ padding: 0, minHeight: '100%' }}>
+          <Content style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
             <AppRoutes /> {/* Renderiza o componente de login aqui */}
           </Content>
         </Layout>
