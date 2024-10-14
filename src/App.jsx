@@ -1,4 +1,3 @@
-// App.js
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import { Button, Layout, theme } from 'antd';
 import { useEffect, useState } from 'react';
@@ -58,14 +57,14 @@ function App() {
               />
             </Header>
             <Content style={{ margin: '16px', height: 'auto', width: 'auto' }}>
-  <AppRoutes />
-</Content>
+              <AppRoutes /> {/* Renderiza as rotas principais */}
+            </Content>
           </Layout>
         </>
       ) : (
         <Layout style={{ padding: 0}}>
           <Content style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
-            <AppRoutes /> {/* Renderiza o componente de login aqui */}
+            <AppRoutes /> {/* Renderiza apenas o componente de login */}
           </Content>
         </Layout>
       )}
