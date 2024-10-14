@@ -15,12 +15,17 @@ function Login() {
 
   const navigate = useNavigate(); 
 
+  // Verifique se o usuário já está autenticado
   useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      navigate("/home"); // Redireciona para a página inicial se o token existir
+    }
     setTimeout(() => {
       setIsLoaded(true);
     }, 100); 
     document.body.className = theme; 
-  }, [theme]);
+  }, [theme, navigate]);
 
   const validate = () => {
     let formErrors = {};
@@ -66,9 +71,8 @@ function Login() {
         if (response.ok) {
           const data = await response.json();
           alert("Login realizado com sucesso!");
-          console.log("Token JWT:", data.token); 
           localStorage.setItem("token", data.token);
-          navigate("/home");
+          navigate("/home"); // Redireciona para a página home após o login
         } else if (response.status === 401) {
           const errorData = await response.json();
           setLoginError(errorData.message || "Credenciais inválidas");
