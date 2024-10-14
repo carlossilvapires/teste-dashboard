@@ -280,14 +280,14 @@ const TelaOperador = () => {
           <Table
             dataSource={filteredData}
             columns={columns}
-            pagination={{ pageSize: 6 }}
+            pagination={{ pageSize: 10 }}
             scroll={{ x: false }}
           />
         </div>
       </Content>
 
-      <Footer style={{ textAlign: 'center', paddingTop:'auto'}}>
-        Sistema de Gestão de Usuários ©2024
+      <Footer style={{ textAlign: 'center'}}>
+        Gestão de Usuários ©2024
       </Footer>
 
       <Modal

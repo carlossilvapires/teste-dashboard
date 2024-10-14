@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Logo from './components/Logo';
 import MenuList from './components/MenuList';
-import ToggleThemeButton from './components/ToggleThemeButton';
 import AppRoutes from './Routes'; // Importando as rotas
 
 const { Header, Sider, Content } = Layout;
@@ -48,7 +47,6 @@ function App() {
           >
             <Logo />
             <MenuList darkTheme={darkTheme}/>
-            <ToggleThemeButton darkTheme={darkTheme} toggleTheme={toggleTheme} />
           </Sider>
           <Layout>
             <Header style={{ padding: 0, background: colorBgContainer }}>
@@ -59,13 +57,13 @@ function App() {
                 icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
               />
             </Header>
-            <Content style={{ margin: '16px', height: 'auto'}}>
-              <AppRoutes /> {/* Renderiza as rotas aqui */}
-            </Content>
+            <Content style={{ margin: '16px', height: 'auto', width: 'auto' }}>
+  <AppRoutes />
+</Content>
           </Layout>
         </>
       ) : (
-        <Layout style={{ padding: 0, minHeight: '100%' }}>
+        <Layout style={{ padding: 0}}>
           <Content style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
             <AppRoutes /> {/* Renderiza o componente de login aqui */}
           </Content>

@@ -34,7 +34,7 @@
 }
 
 .menu-bar {
-  height: 75vh;
+  height: auto;
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
@@ -43,15 +43,3 @@
   position: relative;
 }
 
-.toggle-theme-btn {
-  position: absolute;
-  bottom: 30px;
-  left: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;}
-
-.toggle {
-  margin-left: 15px;
-}
