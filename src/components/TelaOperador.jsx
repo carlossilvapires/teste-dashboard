@@ -1,16 +1,33 @@
 import { PlusOutlined } from "@ant-design/icons";
-import { Button, Form, Input, Layout, message, Modal, Popconfirm, Select, Space, Table, } from "antd";
+import { Button, Form, Input, Layout, message, Modal, Popconfirm, Select, Space, Table } from "antd";
 import React, { useEffect, useState } from "react";
-import "./TelaOperador.css";
-const { Header, Content, Footer } = Layout;
-const { Option } = Select;
-
 const TelaOperador = () => {
   const [dataSource, setDataSource] = useState([]);
   const [editingUser, setEditingUser] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [searchText, setSearchText] = useState("");
-  const [form] = Form.useForm(); // Adicione isso na declaração de estado
+  const [form] = Form.useForm(); // Adicionei aqui para o formulário
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [buttonLabel, setButtonLabel] = useState("Cadastrar Usuário");
+  const { Header, Content, Footer } = Layout;
+  const { Option } = Select;
+
+  const handleResize = () => {
+    setWindowWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (windowWidth < 1200) {
+      setButtonLabel("");
+    } else {
+      setButtonLabel("Cadastrar Usuário");
+    }
+  }, [windowWidth]);
 
   const fetchUsuarios = async () => {
     try {
@@ -25,6 +42,7 @@ const TelaOperador = () => {
           },
         }
       );
+
 
       if (!response.ok) {
         throw new Error("Erro ao buscar usuários.");
@@ -313,14 +331,14 @@ const TelaOperador = () => {
                 onChange={onSearchChange}
                 style={{ flex: 1, maxWidth: "300px", marginRight: "16px" }} // Altera a largura para se ajustar ao espaço
               />
-              <Button
-                type="primary"
-                icon={<PlusOutlined />}
-                onClick={createUser}
-                style={{ margin: "-130px -15px 0 0" }}
-              >
-                Cadastrar Usuário
-              </Button>
+            <Button
+              type="primary"
+              icon={<PlusOutlined />}
+              onClick={createUser}
+              className="button-custom"
+            >
+              {buttonLabel}  {/* Texto do botão atualizado */}
+            </Button>
             </div>
 
             <Table
