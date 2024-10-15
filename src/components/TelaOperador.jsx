@@ -202,7 +202,7 @@ const TelaOperador = () => {
       dataIndex: "statusOperador",
       key: "statusOperador",
       sorter: (a, b) => a.statusOperador.localeCompare(b.statusOperador),
-      responsive: ["xs"],
+      responsive: ["xl"],
       width: 100,
     },
     {
@@ -210,7 +210,7 @@ const TelaOperador = () => {
       dataIndex: "nome",
       key: "nome",
       sorter: (a, b) => a.nome.localeCompare(b.nome),
-      responsive: ["xs"],
+      responsive: ["md", "xs"],
       width: 150,
     },
     {
@@ -218,7 +218,7 @@ const TelaOperador = () => {
       dataIndex: "operador",
       key: "operador",
       sorter: (a, b) => a.operador - b.operador,
-      responsive: ["xs"],
+      responsive: ["md", "xs"],
       width: 100,
     },
     {
@@ -243,28 +243,28 @@ const TelaOperador = () => {
       key: "dataNascimento",
       sorter: (a, b) => new Date(a.dataNascimento) - new Date(b.dataNascimento),
       render: (text) => (text ? new Date(text).toLocaleDateString() : ""),
-      responsive: ["lg"],
+      responsive: ["md"],
       width: 120,
     },
     {
       title: "Telefone",
       dataIndex: "telefone",
       key: "telefone",
-      responsive: ["xl"],
+      responsive: ["md"],
       width: 160,
     },
     {
       title: "Telefone Emergência",
       dataIndex: "telefoneEmergencia",
       key: "telefoneEmergencia",
-      responsive: ["xl"],
+      responsive: ["md"],
       width: 150,
     },
     {
       title: "Tipo Sanguíneo",
       dataIndex: "tipoSanguineo",
       key: "tipoSanguineo",
-      responsive: ["lg"],
+      responsive: ["md"],
       width: 110,
     },
     {
@@ -272,7 +272,7 @@ const TelaOperador = () => {
       dataIndex: "ocupacao",
       key: "ocupacao",
       sorter: (a, b) => a.ocupacao.localeCompare(b.ocupacao),
-      responsive: ["lg"],
+      responsive: ["md"],
       width: 150,
     },
     {
@@ -280,7 +280,7 @@ const TelaOperador = () => {
       dataIndex: "role",
       key: "role",
       sorter: (a, b) => a.role.localeCompare(b.role),
-      responsive: ["xs"],
+      responsive: ["md", "xs"],
       width: 150,
     },
   ];
