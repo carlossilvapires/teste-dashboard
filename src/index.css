@@ -9,7 +9,6 @@
   font-family: 'Poppins', sans-serif;
 }
 
-
 .sidebar {
   color: #fff;
 }
@@ -34,7 +33,7 @@
 }
 
 .menu-bar {
-  height: auto;
+  height: 100vh;
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
@@ -42,4 +41,8 @@
   font-size: 1rem;
   position: relative;
 }
-
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden; /* Remove a rolagem do body */
+}

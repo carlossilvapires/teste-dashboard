@@ -63,7 +63,7 @@ function App() {
             <MenuList darkTheme={darkTheme} onLogout={handleLogout}/>
           </Sider>
           <Layout>
-            <Header style={{ padding: 0, background: colorBgContainer, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <Header style={{ padding: 0, background: colorBgContainer, display: 'flex', justifyContent: 'space-between', alignItems: 'center', height:'60px' }}>
               <div>
                 <Button
                   type="text"

@@ -1,5 +1,5 @@
-import React from 'react';
 import { Layout } from 'antd';
+import React from 'react';
 
 const { Header, Content, Footer } = Layout; // Destructure the Layout components
 
@@ -12,7 +12,7 @@ const TelaHome = () => {
       </Header>
 
       {/* Content Section */}
-      <Content style={{ padding: '0 50px', marginTop: '20px' , height: '100vh',}}>
+      <Content style={{ padding: '0 50px', marginTop: '20px', height:'78.5vh'}}>
         <div style={{ background: '#887', padding: 24, minHeight: 280 , }}>
           <h1>Tela Home</h1>
           <p>Tela Home.</p>

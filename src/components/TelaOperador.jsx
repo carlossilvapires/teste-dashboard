@@ -1,7 +1,7 @@
 import { PlusOutlined } from '@ant-design/icons';
 import { Button, Form, Input, Layout, message, Modal, Popconfirm, Select, Space, Table } from 'antd';
 import React, { useEffect, useState } from 'react';
-
+import './TelaOperador.css';
 const { Header, Content, Footer } = Layout;
 const { Option } = Select;
 
@@ -260,12 +260,12 @@ const TelaOperador = () => {
       <Header style={{ backgroundColor: '#001529', color: '#fff', textAlign: 'center', padding: '0 50px' }}>
         <h1 style={{ color: '#fff' }}>Tela Operador</h1>
       </Header>
-      <Content style={{ padding: '0 20px', margin: '20px 0 20px 0', height:'100%'}}>
-  <div style={{ background: '#fff', padding: '24px', minHeight: '280px', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)', height:'auto'}}>
+      <Content style={{ padding: '0 20px', margin: '20px 0 20px 0'}}>
+  <div style={{ background: '#fff', padding: '24px', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)', height:'101vh'}}>
     <h1 style={{ fontSize: '1.5em' }}>Operador</h1>
     <p>Esta é a tela de operador.</p>
 
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '16px'}}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '16px', height:'120vh'}}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <Input
           placeholder="Pesquisar por nome"
@@ -281,15 +281,17 @@ const TelaOperador = () => {
       <Table
   columns={columns}
   dataSource={filteredData}
-  scroll={{ x: false}} // Permite que a tabela se ajuste à largura da tela
+  scroll={{ x: false, y:'100%'}} // Permite que a tabela se ajuste à largura da tela
   pagination={{ pageSize: 10}}
   style={{ width: '100%', overflow:'auto'}} // Garante que a tabela ocupe 100% da largura do contêiner
 />
+
+
     </div>
   </div>
 </Content>
 <Content> 
-<Footer style={{ textAlign: 'center'}}>
+<Footer style={{ textAlign: 'center', height:''}}>
         Gestão de Usuários ©2024
       </Footer>
 </Content>
