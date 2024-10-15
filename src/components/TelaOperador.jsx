@@ -20,14 +20,14 @@ const TelaOperador = () => {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
+          'Authorization': `Bearer ${token}`, // Corrigido para usar crase
         },
       });
-
+  
       if (!response.ok) {
         throw new Error('Erro ao buscar usuários.');
       }
-
+  
       const data = await response.json();
       setDataSource(data.map(user => ({
         ...user,
@@ -39,6 +39,7 @@ const TelaOperador = () => {
       message.error('Erro ao carregar usuários.');
     }
   };
+  
 
   useEffect(() => {
     fetchUsuarios();
@@ -74,7 +75,7 @@ const TelaOperador = () => {
       const token = localStorage.getItem('token');
       const method = editingUser.id ? 'PUT' : 'POST';
       const url = editingUser.id 
-        ? 'https://api.airsoftcontrol.com.br/api/admin/atualizar/${editingUser.id}'
+        ? `https://api.airsoftcontrol.com.br/api/admin/atualizar/${editingUser.id}`
         : 'https://api.airsoftcontrol.com.br/api/admin/cadastro';
   
       const userData = {
@@ -88,7 +89,7 @@ const TelaOperador = () => {
         method,
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
+          'Authorization': `Bearer ${token}`,
         },
         body: JSON.stringify(userData),
       });
@@ -118,18 +119,18 @@ const TelaOperador = () => {
   const deleteUser = async (id) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`https://api.airsoftcontrol.com.br/api/admin/remover/${id}`, {
+      const response = await fetch(`https://api.airsoftcontrol.com.br/api/admin/remover/${id}`, { // Corrigido para usar crase
         method: 'DELETE',
         headers: {
-          'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`, // Corrigido para usar crase
         },
       });
-
+  
       if (!response.ok) {
         throw new Error('Erro ao excluir usuário.');
       }
-
+  
       message.success('Usuário excluído com sucesso!');
       fetchUsuarios();
     } catch (error) {
@@ -185,7 +186,7 @@ const TelaOperador = () => {
       key: 'cpf',
       sorter: (a, b) => a.cpf.localeCompare(b.cpf),
       responsive: ['md'],
-      width: 155,
+      width: 150,
     },
     {
       title: 'Data de Nascimento',
@@ -259,36 +260,39 @@ const TelaOperador = () => {
       <Header style={{ backgroundColor: '#001529', color: '#fff', textAlign: 'center', padding: '0 50px' }}>
         <h1 style={{ color: '#fff' }}>Tela Operador</h1>
       </Header>
+      <Content style={{ padding: '0 20px', margin: '20px 0 20px 0', height:'100%'}}>
+  <div style={{ background: '#fff', padding: '24px', minHeight: '280px', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)', height:'auto'}}>
+    <h1 style={{ fontSize: '1.5em' }}>Operador</h1>
+    <p>Esta é a tela de operador.</p>
 
-      <Content style={{ padding: '0 50px', marginTop: '20px', height: '100vh' }}>
-        <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
-          <h1>Operador</h1>
-          <p>Esta é a tela de operador.</p>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '16px'}}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Input
+          placeholder="Pesquisar por nome"
+          value={searchText}
+          onChange={onSearchChange}
+          style={{ flex: 1, maxWidth: '300px', marginRight: '16px' }} // Altera a largura para se ajustar ao espaço
+        />
+        <Button type="primary" icon={<PlusOutlined />} onClick={createUser} style={{ margin: '-130px -15px 0 0' }}>
+          Cadastrar Usuário
+        </Button>
+      </div>
 
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 16 }}>
-            <Input
-              placeholder="Pesquisar por nome"
-              value={searchText}
-              onChange={onSearchChange}
-              style={{ width: 300 }}
-            />
-            <Button type="primary" icon={<PlusOutlined />} onClick={createUser}>
-              Cadastrar Usuário
-            </Button>
-          </div>
-
-          <Table
-            dataSource={filteredData}
-            columns={columns}
-            pagination={{ pageSize: 10 }}
-            scroll={{ x: false }}
-          />
-        </div>
-      </Content>
-
-      <Footer style={{ textAlign: 'center'}}>
+      <Table
+  columns={columns}
+  dataSource={filteredData}
+  scroll={{ x: false}} // Permite que a tabela se ajuste à largura da tela
+  pagination={{ pageSize: 10}}
+  style={{ width: '100%', overflow:'auto'}} // Garante que a tabela ocupe 100% da largura do contêiner
+/>
+    </div>
+  </div>
+</Content>
+<Content> 
+<Footer style={{ textAlign: 'center'}}>
         Gestão de Usuários ©2024
       </Footer>
+</Content>
 
       <Modal
         title={editingUser?.id ? 'Editar Usuário' : 'Cadastrar Usuário'}

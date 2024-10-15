@@ -1,5 +1,5 @@
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
-import { Button, Layout, theme } from 'antd';
+import { Button, Layout, Modal, theme } from 'antd';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Logo from './components/Logo';
@@ -25,6 +25,21 @@ function App() {
     }
   }, [navigate]);
 
+  // Função para deslogar com confirmação
+  const handleLogout = () => {
+    Modal.confirm({
+      title: 'Deseja sair?',
+      content: 'Tem certeza de que deseja deslogar?',
+      onOk: () => {
+        localStorage.removeItem('token'); // Remove o token do localStorage
+        navigate('/login'); // Redireciona para a página de login
+      },
+      onCancel: () => {
+        // Ação opcional no cancelamento
+      },
+    });
+  };
+
   const toggleTheme = () => {
     setDarkTheme(!darkTheme);
   };
@@ -45,25 +60,32 @@ function App() {
             className='sidebar'
           >
             <Logo />
-            <MenuList darkTheme={darkTheme}/>
+            <MenuList darkTheme={darkTheme} onLogout={handleLogout}/>
           </Sider>
           <Layout>
-            <Header style={{ padding: 0, background: colorBgContainer }}>
-              <Button
-                type="text"
-                className="toggle"
-                onClick={() => setCollapsed(!collapsed)}
-                icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-              />
+            <Header style={{ padding: 0, background: colorBgContainer, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div>
+                <Button
+                  type="text"
+                  className="toggle"
+                  onClick={() => setCollapsed(!collapsed)}
+                  icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                />
+              </div>
+              <Button type="primary" onClick={handleLogout} style={{ marginRight: '16px' }}> {/* Adiciona margem à direita */}
+                Logout
+              </Button>
             </Header>
-            <Content style={{ margin: '16px', height: 'auto', width: 'auto' }}>
-              <AppRoutes /> {/* Renderiza as rotas principais */}
-            </Content>
-          </Layout>
+            <Content style={{ margin: '16px', overflow: 'auto', height:'100vh'}}>
+  <div style={{ padding: '24px', background: '#fff', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'}}>
+    <AppRoutes /> {/* Renderiza as rotas principais */}
+  </div>
+</Content>
+          </Layout >
         </>
       ) : (
         <Layout style={{ padding: 0}}>
-          <Content style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
+          <Content style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
             <AppRoutes /> {/* Renderiza apenas o componente de login */}
           </Content>
         </Layout>

@@ -19,7 +19,7 @@ function Login() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      navigate("/home"); // Redireciona para a página inicial se o token existir
+      navigate("/TelaHome"); // Redireciona para a página inicial se o token existir
     }
     setTimeout(() => {
       setIsLoaded(true);
@@ -72,7 +72,7 @@ function Login() {
           const data = await response.json();
           alert("Login realizado com sucesso!");
           localStorage.setItem("token", data.token);
-          navigate("/home"); // Redireciona para a página home após o login
+          navigate("/TelaHome"); // Redireciona para a página home após o login
         } else if (response.status === 401) {
           const errorData = await response.json();
           setLoginError(errorData.message || "Credenciais inválidas");
