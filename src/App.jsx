@@ -102,7 +102,7 @@ function App() {
         </>
       ) : (
         <Layout style={{ padding: 0 }}>
-          <Content style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+          <Content style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh'}}>
             <AppRoutes />
           </Content>
         </Layout>

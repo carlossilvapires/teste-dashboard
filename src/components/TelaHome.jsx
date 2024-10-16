@@ -12,8 +12,12 @@ const TelaHome = () => {
       </Header>
 
       {/* Content Section */}
-      <Content style={{ padding: '0 50px', marginTop: '20px', height:'78.5vh'}}>
-        <div style={{ background: '#887', padding: 24, minHeight: 280 , }}>
+      <Content style={{ padding: "0 20px", margin: "20px 0 20px 0", height:'200%'}}>
+        <div style={{ background: "#fff",
+            padding: "24px",
+            borderRadius: "8px",
+            boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+            height: "100%", }}>
           <h1>Tela Home</h1>
           <p>Tela Home.</p>
           <p>Teste</p>
@@ -21,7 +25,7 @@ const TelaHome = () => {
       </Content>
 
       {/* Footer Section */}
-      <Footer style={{ textAlign: 'center' ,background: '#387',}}>
+      <Footer style={{ paddingTop:'35px',textAlign: "center", height: "15vh"}}>
         Ant Design ©2024 Created by You
       </Footer>
     </Layout>
