@@ -202,7 +202,6 @@ const TelaOperador = () => {
       dataIndex: "statusOperador",
       key: "statusOperador",
       sorter: (a, b) => a.statusOperador.localeCompare(b.statusOperador),
-      responsive: ["xl"],
       width: 100,
     },
     {
@@ -210,7 +209,6 @@ const TelaOperador = () => {
       dataIndex: "nome",
       key: "nome",
       sorter: (a, b) => a.nome.localeCompare(b.nome),
-      responsive: ["md", "xs"],
       width: 150,
     },
     {
@@ -218,7 +216,6 @@ const TelaOperador = () => {
       dataIndex: "operador",
       key: "operador",
       sorter: (a, b) => a.operador - b.operador,
-      responsive: ["md", "xs"],
       width: 100,
     },
     {
@@ -280,7 +277,6 @@ const TelaOperador = () => {
       dataIndex: "role",
       key: "role",
       sorter: (a, b) => a.role.localeCompare(b.role),
-      responsive: ["md", "xs"],
       width: 150,
     },
   ];
