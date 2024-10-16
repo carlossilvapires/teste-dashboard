@@ -136,7 +136,7 @@ const TelaOperador = () => {
 
   const editUser = (record) => {
     console.log("Editando usuário:", record); // Verifique o que está sendo passado
-    setEditingUser({ ...record }); // Cria uma nova referência para garantir a atualização correta do estado
+    setEditingUser({ ...record, senha:"" }); // Cria uma nova referência para garantir a atualização correta do estado
     setIsEditing(true);
   };
 
@@ -227,7 +227,7 @@ const TelaOperador = () => {
       key: "email",
       sorter: (a, b) => a.email.localeCompare(b.email),
       responsive: ["md"],
-      width: 250,
+      width: 300,
     },
     {
       title: "CPF",
@@ -352,7 +352,7 @@ const TelaOperador = () => {
         </div>
 
         <Footer style={{ textAlign: "center", height: "20vh" }}>
-          Gestão de Usuários ©2024
+          Gestão usuários ©2024
         </Footer>
       </Content>
 
@@ -385,7 +385,6 @@ const TelaOperador = () => {
           <Form.Item
             label="Senha"
             name="senha"
-            rules={[{ required: true, message: "Por favor insira a senha!" }]}
           >
             <Input.Password />
           </Form.Item>
